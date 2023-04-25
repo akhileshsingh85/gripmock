@@ -16,10 +16,15 @@ var mx = sync.Mutex{}
 
 // below represent map[servicename][methodname][]expectations
 type stubMapping map[string]map[string][]storage
-
+type uqlStore map[string]interface{}
+type uqlRequest struct {
+	Query    string     `json:"query"`
+	Response []Response `json:"response"`
+}
 type matchFunc func(interface{}, interface{}) bool
 
 var stubStorage = stubMapping{}
+var uqlStorage = make(uqlStore)
 
 type storage struct {
 	Input  Input
@@ -49,6 +54,12 @@ func allStub() stubMapping {
 	mx.Lock()
 	defer mx.Unlock()
 	return stubStorage
+}
+
+func allUqlStub() uqlStore {
+	mx.Lock()
+	defer mx.Unlock()
+	return uqlStorage
 }
 
 type closeMatch struct {

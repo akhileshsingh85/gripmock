@@ -1,0 +1,22 @@
+{
+  "service": "MetricsService",
+  "method": "Export",
+  "input": {
+    "contains": {
+      "resource_metrics": [
+        {
+          "resource": {
+            "attributes": [
+              {
+                "key": "service.instance.id"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "output": {
+    "data": {}
+  }
+}

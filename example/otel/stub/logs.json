@@ -1,0 +1,22 @@
+{
+  "service": "LogsService",
+  "method": "Export",
+  "input": {
+    "contains": {
+      "resource_logs": [
+        {
+          "resource": {
+            "attributes": [
+              {
+                "key": "service.instance.id"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "output": {
+    "data": {}
+  }
+}

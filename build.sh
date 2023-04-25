@@ -5,6 +5,7 @@ if [ "$1" = "" ]; then
 	exit 0
 fi
 
-go build ../.
+go build .
 
-docker build -t "tkpd/gripmock:$1" .
+docker build -t "akhileshsingh85/appd-mock-amd64:$1" --platform linux/amd64 .
+docker build -t "akhileshsingh85/appd-mock:$1" .
